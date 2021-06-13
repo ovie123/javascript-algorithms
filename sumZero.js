@@ -1,14 +1,29 @@
 // O(n^2);
 const sumZero = (arr) => {
   for (let i = 0; i < arr.length; i++) {
-    const el = arr[i];
-    for (let j = 0; j < arr.length; j++) {
-      const el2 = arr[j];
-      if (el + el2 === 0) {
-        return [el, el2];
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === 0) {
+        return [arr[i], arr[j]];
       }
     }
   }
 };
 
-console.log(sumZero[(-4, -3, -2, -1, 0, 1, 2, 5)]);
+//refactored tp O(n);
+const sumZero = (arr) => {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    let sum = arr[left] + arr[right];
+    if (sum === 0) {
+      return [arr[left], arr[right]];
+    } else if (sum > 0) {
+      right--;
+    } else {
+      left++;
+    }
+  }
+};
+
+console.log(sumZero([-3, -2, -1, 0, 2, 5]));
