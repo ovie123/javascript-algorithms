@@ -9,7 +9,7 @@ const sumZero = (arr) => {
   }
 };
 
-//refactored tp O(n);
+//refactored to O(n);
 const sumZero = (arr) => {
   let left = 0;
   let right = arr.length - 1;
